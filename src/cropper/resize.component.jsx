@@ -34,6 +34,7 @@ function ResizeComponent(props) {
                 );
                 original_x = element.getBoundingClientRect().left;
                 original_y = element.getBoundingClientRect().top;
+                // console.log('element', resizableRef)
                 original_mouse_x = e.pageX;
                 original_mouse_y = e.pageY;
                 window.addEventListener('mousemove', resize);
@@ -59,7 +60,8 @@ function ResizeComponent(props) {
                     }
                     if (width > minimum_size) {
                         element.style.width = width + 'px';
-                        element.style.left = original_x + (e.pageX - original_mouse_x) + 'px';
+
+                        element.style.left = original_x + (e.pageX - original_mouse_x - resizeContainerRef.current.getBoundingClientRect().left) + 'px';
                     }
                 } else if (currentResizer.classList.contains('top-right')) {
                     const width = original_width + (e.pageX - original_mouse_x);
@@ -69,18 +71,18 @@ function ResizeComponent(props) {
                     }
                     if (height > minimum_size) {
                         element.style.height = height + 'px';
-                        element.style.top = original_y + (e.pageY - original_mouse_y) + 'px';
+                        element.style.top = original_y + (e.pageY - original_mouse_y - resizeContainerRef.current.getBoundingClientRect().top) + 'px';
                     }
                 } else {
                     const width = original_width - (e.pageX - original_mouse_x);
                     const height = original_height - (e.pageY - original_mouse_y);
                     if (width > minimum_size) {
                         element.style.width = width + 'px';
-                        element.style.left = original_x + (e.pageX - original_mouse_x) + 'px';
+                        element.style.left = original_x + (e.pageX - original_mouse_x - resizeContainerRef.current.getBoundingClientRect().left) + 'px';
                     }
                     if (height > minimum_size) {
                         element.style.height = height + 'px';
-                        element.style.top = original_y + (e.pageY - original_mouse_y) + 'px';
+                        element.style.top = original_y + (e.pageY - original_mouse_y - resizeContainerRef.current.getBoundingClientRect().top) + 'px';
                     }
                 }
             }

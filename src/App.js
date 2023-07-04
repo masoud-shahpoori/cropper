@@ -7,8 +7,13 @@ function App() {
     return (
         <div className="App">
 
-            <CropperContainer
-                src={logo}/>
+
+            <div style={{margin: '100px 100px', position: 'relative'}}>
+
+                <CropperContainer
+                    src={logo}/>
+
+            </div>
         </div>
     );
 }
