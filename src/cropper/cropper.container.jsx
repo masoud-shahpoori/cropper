@@ -1,13 +1,13 @@
 import React from 'react';
+import ResizeComponent from "./resize.component";
 
-function CropperComponent(props) {
+function CropperContainer(props) {
     return (
-        <div></div>
+        <ResizeComponent src={props.src}/>
     );
 }
 
-export default CropperComponent;
+export default CropperContainer;
 
 
 
-/*Make resizable div by Hung Nguyen*/
